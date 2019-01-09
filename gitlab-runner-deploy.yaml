@@ -1,0 +1,31 @@
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gitlab-runner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: gitlab-runner
+  template:
+    metadata:
+      labels:
+        name: gitlab-runner
+    spec:
+      containers:
+      - args:
+        - run
+        - --config
+        - /etc/gitlab-runner/config/config.toml
+        image: gitlab/gitlab-runner:latest
+        name: gitlab-runner
+        volumeMounts:
+        - mountPath: /etc/gitlab-runner/config
+          name: config
+      restartPolicy: Always
+      volumes:
+      - name: config
+        secret:
+          secretName: hw21-gitlab-runner-config
+        
