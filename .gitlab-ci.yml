@@ -1,0 +1,12 @@
+image: python:3.7
+
+test:
+  script:
+  - python --version
+  
+test_36:
+  image: python:3.6
+  script:
+  - python --version
+
+  
