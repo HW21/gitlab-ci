@@ -1,15 +1,23 @@
+
 image: alpine:latest
 
-test_alpine:
+alpine:
   script:
     - ls -al / 
 
-test_py37:
+py37:
   image: python:3.7
   script:
   - python --version
   
-test_py36:
+py36:
   image: python:3.6
   script:
   - python --version
+
+hw21_ngspice:
+  image: hw21/ngspice 
+  script:
+  - ngspice -v 
+
+
